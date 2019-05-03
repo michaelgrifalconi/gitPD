@@ -1,0 +1,11 @@
+Host *github.com 
+IdentitiesOnly yes 
+StrictHostKeyChecking no 
+UserKnownHostsFile=/dev/null 
+IdentityFile /root/.ssh/id_rsa 
+
+Host github.*
+IdentitiesOnly yes 
+StrictHostKeyChecking no 
+UserKnownHostsFile=/dev/null 
+IdentityFile /root/.ssh/id_rsa

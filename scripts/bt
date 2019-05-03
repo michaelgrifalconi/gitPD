@@ -1,0 +1,5 @@
+#!/bin/bash -e
+
+./scripts/build --dev
+
+./scripts/test

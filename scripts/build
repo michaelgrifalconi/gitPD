@@ -1,0 +1,19 @@
+#!/bin/bash -e
+
+ function print_usage {
+     echo "Usage: ./scripts/build [--dev|--final VERSION]"
+     echo "--dev: Build a dev release, with an invalid tag, good for testing local changes without plan of pushing the image on DockerHub"
+     echo "--final: Build final release, with specified tag version."
+}
+
+if [ "$1" == "--dev" ]; then
+  docker build -t michaelgrifalconi/gitpd:v0.dev -f ./build/builder/Dockerfile .
+elif [ "$1" == "--final" ]; then
+  if [ "$2" != "" ]; then
+    docker build --no-cache -t michaelgrifalconi/gitpd:"$2" -f ./build/builder/Dockerfile .
+  else
+    print_usage
+  fi
+else 
+  print_usage
+fi

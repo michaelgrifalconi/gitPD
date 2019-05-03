@@ -1,0 +1,16 @@
+#!/bin/bash -e
+
+rm -rf tmp
+mkdir -p tmp/gitcache
+mkdir -p tmp/result
+
+# Full org, one repo blacklisted
+docker run -v "$(pwd)/tmp/gitcache":/tmp/repos  \
+-v ~/.ssh/id_rsa_personal:/root/.ssh/id_rsa \
+-v "$(pwd)/tmp/result":/tmp/results michaelgrifalconi/gitpd:v0.dev \
+-token "$TOKEN" \
+-kind "ORG" \
+-target "github-api-test-org" \
+-blacklist "jenkins"
+
+#TODO: test user scan
